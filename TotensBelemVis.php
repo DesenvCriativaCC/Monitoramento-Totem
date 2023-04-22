@@ -8,12 +8,13 @@ date_default_timezone_set('America/Sao_Paulo');
 $pegar_ip = $_SERVER["REMOTE_ADDR"]; //SERVER_NAME
 $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
 
-  # Gravar Log Erro       
+  # Incio Gravar Log Erro       
     $fp2 = fopen("./log_Acesso/ERR_".date("d-m-Y").".txt", "a+");
     $txt = "\n".date("d/m/Y - H:i:s")."  \t\t". $pegar_ip." \t\t". $hostname;
     fwrite($fp2, $txt);
 
     fclose($fp2); 
+  # Final Gravar Log Erro     
     header("Refresh:60"); //recarrega em 60 segundos  
 
 $data_Offdow = date('Y-m-d H:i');
