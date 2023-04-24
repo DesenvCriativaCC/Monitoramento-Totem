@@ -4,9 +4,10 @@ include_once('querysql\query.php');
 
 date_default_timezone_set('America/Sao_Paulo');
 
-
+ # Incio hostname 
 $pegar_ip = $_SERVER["REMOTE_ADDR"]; //SERVER_NAME
 $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+ # Final hostname 
 
   # Incio Gravar Log Erro       
     $fp2 = fopen("./log_Acesso/ERR_".date("d-m-Y").".txt", "a+");
