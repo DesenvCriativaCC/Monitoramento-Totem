@@ -403,7 +403,7 @@ $data_atual = date('Y-m-d');
                                                         <div class="row text-center">
                                                             <div class="col-6 ml-auto">
                                                             <?php
-                                                                $query = $conexao->query("SELECT p.dataPreventiva, p.dataProxPreventiva
+                                                                $query = $conexao->query("SELECT p.dataPreventiva, p.dataProxPreventiva, p.id_totem
                                                                 FROM tbl_totem AS t
                                                                 INNER JOIN tbl_ptotem AS p
                                                                 ON t.id_totem = p.id_totem
@@ -423,7 +423,6 @@ $data_atual = date('Y-m-d');
                                                                         <path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H64C28.7 64 0 92.7 0 128v16 48V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V192 144 128c0-35.3-28.7-64-64-64H344V24c0-13.3-10.7-24-24-24s-24 10.7-24 24V64H152V24zM48 192h80v56H48V192zm0 104h80v64H48V296zm128 0h96v64H176V296zm144 0h80v64H320V296zm80-48H320V192h80v56zm0 160v40c0 8.8-7.2 16-16 16H320V408h80zm-128 0v56H176V408h96zm-144 0v56H64c-8.8 0-16-7.2-16-16V408h80zM272 248H176V192h96v56z"/>
                                                                     </svg>
                                                                     <?php echo $totens['dataPreventiva'] ?>
-                                                                
                                                             <?php }  ?>
                                                             </div>
 
@@ -434,7 +433,7 @@ $data_atual = date('Y-m-d');
                                                                     //$dadosPreventiva = filter_input_array(INPUT_POST, FILTER_DEFAULT)
                                                                     ?>
                                                                     <!-- Incio Fomulario -->
-                                                                    <form id="form" class="form-row" method="POST" action="proc_cad.php">
+                                                                    <form id="form" class="form-row" method="GET" action="proc_cad.php">
                                                                         <div class="form-group col-12">
 
                                                                             <!-- </div> -->
@@ -450,20 +449,27 @@ $data_atual = date('Y-m-d');
                                                                            }?>
                                                                             
                                                                             <!-- <label class="input-group-text" title="Data Final"><strong>Data Final</strong></label>     -->
+                                                                            
+                                                                            <input type="text" name="id_totem" value="<?php echo $totens['id_totem']?>" class="form-control form-control-sm" hidden>
+                                                                            <br>
                                                                             <input type="date" name="data_Preventiva" value="<?php echo $data_atual ?>" class="form-control form-control-sm"  required="required">
                                                                             <br>
+                                                                            
                                                                             <div class="text-left form-group">
                                                                                 <label for="exampleFormControlFile1">Upload RAT</label>
-                                                                                <input type="file" class="form-control-file" id="exampleFormControlFile1" Disabled>
+                                                                                <input type="file" class="form-control-file" Disabled>
                                                                             </div>
                                                                             
-                                                                            <textarea class="form-control" name="TextoPreventiva" id="exampleFormControlTextarea1" placeholder="Observações:" ></textarea>
+                                                                            <textarea class="form-control" name="TextoPreventiva" id="exampleFormControlTextarea1" placeholder="Observações:" Maxlength="100"></textarea>
                                                                             <br>
-                                                                            <button class="btn btn-primary btn-sm btn-block" onclick="bootstrapAlert()" type="submit" value="Pesquisar" name="#PesqEntreData">
-                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                                                                </svg>
-                                                                                Pesquisar
+                                                                            <div class="text-left form-group">
+                                                                                       
+                                                                            <input type="radio" name="preventiva" value="0" checked> Manutenção.
+                                                                            <input type="radio" name="preventiva" value="1" > Preventiva.
+                                                                            <br><br>
+
+                                                                            <button class="btn btn-primary btn-sm btn-block" onclick="bootstrapAlert()" type="submit" value="Pesquisar" name="##PesqEntreData">
+                                                                                Enviar
                                                                             </button>
                                                                             
                                                                         </div>    
